@@ -14,6 +14,7 @@ import { ProjectItemData } from "@/components/public/ProjectShowcase";
 import { CertificateData } from "@/components/public/CertificateGallery";
 import { TechCategoryData } from "@/components/public/TechArsenal";
 
+export const dynamic = 'force-dynamic';
 export const revalidate = 0; // Disable caching to ensure fresh DB counts
 
 export default async function HomePage() {
