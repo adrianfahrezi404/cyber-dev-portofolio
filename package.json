@@ -1,0 +1,49 @@
+{
+  "name": "cyber-dev",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "better-auth": "^1.6.11",
+    "date-fns": "^4.2.1",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "isomorphic-dompurify": "^3.14.0",
+    "mdast-util-to-markdown": "^2.1.2",
+    "next": "16.2.6",
+    "nodemailer": "^8.0.7",
+    "pg": "^8.21.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "slugify": "^1.6.9",
+    "unified": "^11.0.5",
+    "vfile": "^6.0.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.0",
+    "@types/pg": "^8.20.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

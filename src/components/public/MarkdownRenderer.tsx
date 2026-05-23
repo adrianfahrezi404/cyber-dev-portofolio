@@ -1,0 +1,25 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import rehypeSanitize from "rehype-sanitize";
+
+interface MarkdownRendererProps {
+  content: string;
+  className?: string;
+}
+
+export default function MarkdownRenderer({
+  content,
+  className = "",
+}: MarkdownRendererProps) {
+  return (
+    <div className={`markdown-content ${className}`}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeSanitize, rehypeHighlight]}
+      >
+        {content}
+      </ReactMarkdown>
+    </div>
+  );
+}
