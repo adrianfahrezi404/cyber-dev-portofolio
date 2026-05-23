@@ -438,6 +438,18 @@ export default function ContentAdminPage() {
                     onChange={handleFileUpload}
                     className="w-full text-xs text-text-secondary file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-mono file:font-bold file:bg-white/5 file:text-text-primary hover:file:bg-white/10"
                   />
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 h-px bg-white/10" />
+                    <span className="text-[10px] text-text-muted font-bold uppercase">OR PASTE URL</span>
+                    <div className="flex-1 h-px bg-white/10" />
+                  </div>
+                  <input
+                    type="url"
+                    value={thumbnailUrl}
+                    onChange={(e) => setThumbnailUrl(e.target.value)}
+                    placeholder="https://imgur.com/my-image.png"
+                    className="w-full bg-bg-secondary border border-white/10 rounded-lg px-4 py-2 text-xs text-text-primary focus:border-accent-cyan/50 focus:outline-none"
+                  />
                   {uploading && (
                     <p className="text-[10px] text-accent-cyan animate-pulse">
                       Encrypting & scanning image bytes on the server...
