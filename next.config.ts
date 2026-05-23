@@ -54,7 +54,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
               "img-src 'self' data: blob: https:",
               "font-src 'self' fonts.gstatic.com",
-              "connect-src 'self' https://api.github.com",
+              "connect-src 'self' https://api.github.com https://raw.githubusercontent.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
