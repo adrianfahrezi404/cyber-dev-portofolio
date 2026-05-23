@@ -310,11 +310,16 @@ export default function CertificatesAdminPage() {
                   <input
                     type="url"
                     value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      if (val.includes("github.com") && val.includes("/blob/")) {
+                        val = val.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+                      }
+                      setImageUrl(val);
+                    }}
                     placeholder="https://imgur.com/my-image.png"
                     className="w-full bg-bg-secondary border border-white/10 rounded-lg px-4 py-2 text-xs text-text-primary focus:border-accent-cyan/50 focus:outline-none"
-                  />
-                  {uploading && (
+                  />                  {uploading && (
                     <p className="text-[10px] text-accent-cyan animate-pulse">
                       Encrypting & scanning image bytes on the server...
                     </p>

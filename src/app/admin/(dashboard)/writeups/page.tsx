@@ -446,7 +446,13 @@ export default function ContentAdminPage() {
                   <input
                     type="url"
                     value={thumbnailUrl}
-                    onChange={(e) => setThumbnailUrl(e.target.value)}
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      if (val.includes("github.com") && val.includes("/blob/")) {
+                        val = val.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+                      }
+                      setThumbnailUrl(val);
+                    }}
                     placeholder="https://imgur.com/my-image.png"
                     className="w-full bg-bg-secondary border border-white/10 rounded-lg px-4 py-2 text-xs text-text-primary focus:border-accent-cyan/50 focus:outline-none"
                   />
