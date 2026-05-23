@@ -112,7 +112,7 @@ export default function WriteupsSection({ data }: WriteupsSectionProps) {
           {writeups.map((item, idx) => (
             <article
               key={item.id}
-              className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] fade-in-up group glass-card flex flex-col overflow-hidden transition-all duration-700 ${
+              className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] group glass-card flex flex-col overflow-hidden transition-all duration-700 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
               }`}
               style={{ transitionDelay: `${200 + idx * 80}ms` }}
