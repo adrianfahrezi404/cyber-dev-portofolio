@@ -183,6 +183,7 @@ export default async function HomePage() {
         id: projectsWriteups.id,
         title: projectsWriteups.title,
         summary: projectsWriteups.summary,
+        thumbnailUrl: projectsWriteups.thumbnailUrl,
         slug: projectsWriteups.slug,
         githubUrl: projectsWriteups.githubSyncUrl,
         featured: projectsWriteups.featured,
@@ -209,6 +210,7 @@ export default async function HomePage() {
           : "from-green-400 via-emerald-500 to-cyan-400",
         detailUrl: `/writeups/${w.slug}`,
         githubUrl: w.githubUrl ?? undefined,
+        thumbnailUrl: w.thumbnailUrl ?? undefined,
         category: w.category ?? "Security",
       });
     }

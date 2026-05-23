@@ -11,6 +11,7 @@ export interface WriteupItemData {
   gradient: string;
   detailUrl: string;
   githubUrl?: string;
+  thumbnailUrl?: string;
   category: string;
 }
 
@@ -118,22 +119,35 @@ export default function WriteupsSection({ data }: WriteupsSectionProps) {
             >
               {/* Card top banner */}
               <div
-                className={`relative h-32 w-full overflow-hidden bg-gradient-to-br ${item.gradient} opacity-85 transition-transform duration-500 group-hover:scale-[1.02]`}
+                className={`relative aspect-[16/9] w-full overflow-hidden bg-bg-secondary flex items-center justify-center border-b border-white/5 transition-transform duration-500 group-hover:scale-[1.02]`}
               >
+                {item.thumbnailUrl ? (
+                  <img
+                    src={item.thumbnailUrl}
+                    alt={item.title}
+                    className="w-full h-full object-contain p-2"
+                  />
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-85`} />
+                )}
+
                 {/* Overlay patterns */}
                 <div
-                  className="absolute inset-0 opacity-10"
+                  className="absolute inset-0 opacity-10 pointer-events-none"
                   style={{
                     backgroundImage:
                       'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px)',
                   }}
                 />
-                <div className="absolute inset-0 grid-pattern opacity-25" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-mono text-4xl font-bold text-white/20 select-none">
-                    {item.category === 'Security' ? '> _' : 'log()'}
-                  </span>
-                </div>
+                <div className="absolute inset-0 grid-pattern opacity-25 pointer-events-none" />
+                
+                {!item.thumbnailUrl && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <span className="font-mono text-4xl font-bold text-white/20 select-none">
+                      {item.category === 'Security' ? '> _' : 'log()'}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Card body */}
