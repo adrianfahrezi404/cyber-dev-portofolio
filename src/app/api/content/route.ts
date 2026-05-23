@@ -101,6 +101,11 @@ export async function POST(request: NextRequest) {
 
     const slug = slugify(title, { lower: true, strict: true });
 
+    let parsedThumbnailUrl = thumbnailUrl || null;
+    if (parsedThumbnailUrl && parsedThumbnailUrl.includes("github.com") && parsedThumbnailUrl.includes("/blob/")) {
+      parsedThumbnailUrl = parsedThumbnailUrl.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+    }
+
     // 1. Insert item
     const [inserted] = await db
       .insert(projectsWriteups)
@@ -111,7 +116,7 @@ export async function POST(request: NextRequest) {
         slug,
         summary: summary || null,
         content,
-        thumbnailUrl: thumbnailUrl || null,
+        thumbnailUrl: parsedThumbnailUrl,
         githubSyncUrl: githubSyncUrl || null,
         demoUrl: demoUrl || null,
         featured: !!featured,
@@ -182,6 +187,11 @@ export async function PUT(request: NextRequest) {
 
     const slug = slugify(title, { lower: true, strict: true });
 
+    let parsedThumbnailUrl = thumbnailUrl || null;
+    if (parsedThumbnailUrl && parsedThumbnailUrl.includes("github.com") && parsedThumbnailUrl.includes("/blob/")) {
+      parsedThumbnailUrl = parsedThumbnailUrl.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+    }
+
     // 1. Update item
     const [updated] = await db
       .update(projectsWriteups)
@@ -192,7 +202,7 @@ export async function PUT(request: NextRequest) {
         slug,
         summary: summary || null,
         content,
-        thumbnailUrl: thumbnailUrl || null,
+        thumbnailUrl: parsedThumbnailUrl,
         githubSyncUrl: githubSyncUrl || null,
         demoUrl: demoUrl || null,
         featured: !!featured,

@@ -38,6 +38,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Required fields missing." }, { status: 400 });
     }
 
+    let parsedImageUrl = imageUrl || null;
+    if (parsedImageUrl && parsedImageUrl.includes("github.com") && parsedImageUrl.includes("/blob/")) {
+      parsedImageUrl = parsedImageUrl.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+    }
+
     const [inserted] = await db
       .insert(certificates)
       .values({
@@ -45,7 +50,7 @@ export async function POST(request: NextRequest) {
         issuer,
         issueDate: new Date(issueDate).toISOString().split("T")[0],
         credentialUrl: credentialUrl || null,
-        imageUrl: imageUrl || null,
+        imageUrl: parsedImageUrl,
         category: category || null,
       })
       .returning();
@@ -76,6 +81,11 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Required fields missing." }, { status: 400 });
     }
 
+    let parsedImageUrl = imageUrl || null;
+    if (parsedImageUrl && parsedImageUrl.includes("github.com") && parsedImageUrl.includes("/blob/")) {
+      parsedImageUrl = parsedImageUrl.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+    }
+
     const [updated] = await db
       .update(certificates)
       .set({
@@ -83,7 +93,7 @@ export async function PUT(request: NextRequest) {
         issuer,
         issueDate: new Date(issueDate).toISOString().split("T")[0],
         credentialUrl: credentialUrl || null,
-        imageUrl: imageUrl || null,
+        imageUrl: parsedImageUrl,
         category: category || null,
       })
       .where(eq(certificates.id, id))
