@@ -308,7 +308,7 @@ export default function CertificatesAdminPage() {
                     <div className="flex-1 h-px bg-white/10" />
                   </div>
                   <input
-                    type="url"
+                    type="text"
                     value={imageUrl}
                     onChange={(e) => {
                       let val = e.target.value;

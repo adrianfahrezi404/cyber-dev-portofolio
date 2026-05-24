@@ -444,7 +444,7 @@ export default function ContentAdminPage() {
                     <div className="flex-1 h-px bg-white/10" />
                   </div>
                   <input
-                    type="url"
+                    type="text"
                     value={thumbnailUrl}
                     onChange={(e) => {
                       let val = e.target.value;
